@@ -20,16 +20,17 @@
 
   <script type="text/javascript" src="{{ url_for('static', filename = 'layout.js') }}"></script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <title>World Trivia</title>
   </head>
   <body>
     
 
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-    <img class="logo" src="{{ url_for('static', filename = 'images/world-icon.png') }}">
-    <a class="navbar-brand" href="/">World Trivia</a>
+    <a class="navbar-brand navbar-item" href="/"><img alt="World Trivia logo" class="logo" src="{{ url_for('static', filename = 'images/world-icon.png') }}">World Trivia</a>
     <div class="navbar-nav">
       <a class="nav-link navbar-item" href="/countries">All Countries</a>
       <a class="nav-link navbar-item" href="/countries/create">Create</a>
@@ -41,7 +42,7 @@
             <input id="country-search-input" type="search" placeholder="Search countries" name="search" class="form-control" />
           </div>
           <div class="navbar-item">
-            <input type="submit" class="btn btn-primary" value="Search">
+            <input type="submit" class="btn search-button" value="Search">
           </div>
         </form>
       </div>
@@ -57,9 +58,18 @@
   </div>
 </nav>
 
-    <div class="container">   
-        {% block content %}
-        {% endblock %}
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <div class="message_flash">{{ message }}</div>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      {% block content %}
+      {% endblock %}
     </div>
 
   </body>

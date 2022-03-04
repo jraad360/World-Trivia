@@ -6,24 +6,33 @@ $(document).ready(() => {
   $("#save-button").click(() => {
     clearErrors();
     country = getCountryFromInputs();
-    files = $("#image_input").prop('files');
+    files = $("#image-input").prop('files');
 
     if (!validateInputs(country, files)) {
       return;
     }
 
-    image = files[0];
-    if (data.country) {
+    if (editingExistingCountry()) {
+      let image = undefined;
+      if (files.length > 0) image = files[0];
       updateCountry(data.country.id, country, image);
     } else {
-      createCountry(country, image);
+      $("#edit-country-form").submit();
+      // createCountry(country, files[0]);
     }
   });
-  if (data.country) {
+
+  if (editingExistingCountry()) {
     loadCountryInfo(data.country);
+    $("#cancel-button").click(() => {
+      showDiscardChangesConfirmation();
+    })
   } else {
+    $("#cancel-button").remove();
     setUpCityInputs(Array(10).fill(''));
   }
+
+  $("#country-page-title").focus();
 });
 
 function loadCountryInfo(country) {
@@ -33,7 +42,7 @@ function loadCountryInfo(country) {
     elem.style.height = elem.scrollHeight+'px'; 
   });
   $("#country-page-flag-image").attr('src', country.flag);
-  $("#display-image").css({'backgroundImage': `url(${country.flag})`});
+  $("#display-image").attr({'src': `${country.flag}`});
   $("#official-name").val(country.officialName);
   $("#capital").val(country.capital);
   $("#population").val(parseInt(country.population));
@@ -56,7 +65,7 @@ function getCountryFromInputs() {
     officialName: $("#official-name").val(),
     capital: $("#capital").val(),
     // TODO: upload image
-    flag: '',
+    flag: editingExistingCountry() ? data.country.flag : '',
     population: parseInt($("#population").val()),
     area: parseInt($("#area").val()),
     currency: $("#currency").val(),
@@ -70,7 +79,7 @@ function setUpCityInputs(cities) {
     const divToAddTo = index < 5 ? '#cities-list-left' : '#cities-list-right';
     const html = `
       <div>
-        ${index + 1}. <input class="city-input" id="city-${index}" value="${city}">
+        ${index + 1}. <input class="city-input" id="city-${index}" name="city-${index}" type="text" value="${city}">
       </div>
     `
     const newDiv = $(html)
@@ -87,7 +96,7 @@ async function updateCountry(id, country, image) {
       contentType : "application/json"
     });
     
-    await saveImage(response.country.id, image);
+    if(image) await saveImage(response.country.id, image);
     location.replace(`/countries/${response.country.id}`);
     
   } catch(err) {
@@ -114,7 +123,7 @@ async function createCountry(country, image) {
 
 async function saveImage(id, image) {
   const fd = new FormData();
-  fd.append('file', image);
+  fd.append('image', image);
 
   return $.ajax({
     type: "POST",
@@ -126,14 +135,14 @@ async function saveImage(id, image) {
 }
 
 async function setUpImageSelector() {
-  const imageInput = $("#image_input");
+  const imageInput = $("#image-input");
   imageInput.change(() => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
       const uploadedImage = reader.result;
-      $("#display-image").css({'backgroundImage': `url(${uploadedImage})`});
+      $("#display-image").attr({'src': `${uploadedImage}`});
   });
-    reader.readAsDataURL($("#image_input").prop('files')[0]);
+    reader.readAsDataURL($("#image-input").prop('files')[0]);
   });
 }
 
@@ -164,7 +173,7 @@ function validateInputs(country, files) {
     }
   });
 
-  if (files.length === 0) {
+  if (!editingExistingCountry() && files.length === 0) {
     selector = "#display-image"
     insertError(selector, "Please upload a flag image.");
     errors.push(selector);
@@ -180,4 +189,13 @@ function insertError(selector, message) {
 
 function clearErrors() {
   $("div").remove(".input-error");
+}
+
+function editingExistingCountry() {
+  return data.country;
+}
+
+function showDiscardChangesConfirmation() {
+  const message = "Are you sure you want to discard your changes?";
+  if (confirm(message)) location.replace(`/countries/${data.country.id}`);
 }

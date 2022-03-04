@@ -8,55 +8,59 @@
   let data = {{data|tojson}}
 </script>
 
-<div class="country-page-content">
-  <form id="edit-country-form">
+<div class="country-page-content info-container">
+  <form enctype="multipart/form-data" id="edit-country-form" action="/countries" method="POST">
     <div class="country-page-left-side col-md-7">
-      <div class="title">Name</div>
-      <div><input id="country-page-title"></div>
+      <label for="name" class="title">Name <i class="fa fa-edit"></i></label>
+      <div><input class="form-text " id="country-page-title" name="name" type="text"></div>
       <div>
-        <div class="title">Description</div>
-        <textarea id="country-description"></textarea>
+        <label class="title">Description <i class="fa fa-edit check"></i></label>
+        <textarea class="form-control" name="description" id="country-description"></textarea>
       </div>
     </div>
     <div class="country-page-right-side col-md-5">
       <div>
-        <button id="save-button" class="ui-button" type="button">Save</button>
+        <input id="save-button" class="ui-button" type="button" value="Submit"></input>
+        <button id="cancel-button" class="ui-button" type="button">Discard Changes</button><br>
       </div>
       <div class="general-info">
         <div class="image-upload-container">
-          <input type="file" id="image_input" accept="image/png, image/jpg, image/jpeg">
-          <div id="display-image"></div>
+          <div>
+            <div class="col-md-6 image-upload-item"><label class="title">Flag Image <i class="fa fa-edit"></i></label></div>
+            <div class="col-md-6 image-upload-item"><input type="file" id="image-input" name="image" accept="image/png, image/jpg, image/jpeg"></div>
+          </div>
+          <img alt="uploaded flag image" id="display-image">
         </div>
         <br>
         <div id="general-info-rows">
           <div class="general-info-row">
-            <div class="general-info-row-label col-md-6">Official Name</div>
-            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="official-name"></div>
+            <label class="general-info-row-label col-md-6">Official Name <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="form-text general-info-input" id="official-name" name="officialName" type="text"></div>
           </div>
           <div class="general-info-row">
-            <div class="general-info-row-label col-md-6">Capital</div>
-            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="capital"></div>
+            <label class="general-info-row-label col-md-6">Capital <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="capital" name="capital" type="text"></div>
           </div>
           <div class="general-info-row">
-            <div class="general-info-row-label col-md-6">Population</div>
-            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="population"></div>
+            <label class="general-info-row-label col-md-6">Population <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="population" name="population" type="text"></div>
           </div>
           <div class="general-info-row">
-            <div class="general-info-row-label col-md-6">Area</div>
-            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="area"> sq mi</div>
+            <label class="general-info-row-label col-md-6">Area (sq mi) <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="area" name="area" type="text"></div>
           </div>
           <div class="general-info-row">
-            <div class="general-info-row-label col-md-6">GDP</div>
-            <div class="general-info-row-value col-md-6">$<input class="general-info-input" id="gdp"></div>
+            <label class="general-info-row-label col-md-6">GDP ($)<i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="gdp" name="gdp" type="text"></div>
           </div>
           <div class="general-info-row">
-            <div class="general-info-row-label col-md-6">Currency</div>
-            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="currency"></div>
+            <label class="general-info-row-label col-md-6">Currency <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="currency" name="currency" type="text"></div>
           </div>
         </div>
       </div>
       <div class="cities-list">
-        <div class="title">Most Populous Cities</div>
+        <label class="title">Most Populous Cities <i class="fa fa-edit"></i></label>
         <div id="cities-list-left" class="cities-list-col col-md-6">
         </div>
         <div id="cities-list-right" class="cities-list-col col-md-6">

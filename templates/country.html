@@ -8,7 +8,7 @@
   let data = {{data|tojson}}
 </script>
 
-<div class="country-page-content">
+<div class="country-page-content info-container">
   <div class="country-page-left-side col-md-7">
     <div id="country-page-title"></div>
     <div id="country-description"></div>
@@ -17,11 +17,11 @@
     <div>
       <form action="/countries/{{ data['country']['id'] }}/edit">
         <input id="edit-button" class="ui-button" type="submit" value="Edit" />
-      </form>
+      </form><br>
     </div>
     <div class="general-info">
       <div>
-        <img id="country-page-flag-image">
+        <img alt="flag image" id="country-page-flag-image">
       </div>
       <br>
       <div id="general-info-rows">
@@ -60,22 +60,5 @@
     </div>
   </div>
 </div>
-
-<!-- <div id="country-data">
-  <div class="title">{{ data['country']['name'] }}</div>
-  <img class="flag-image" src="{{ data['country']['flag'] }}">
-  <div>Population: {{ data['country']['population'] }}</div>
-  <div>Area: {{ data['country']['area'] }} square miles</div>
-  <div>Description: {{ data['country']['description'] }}</div>
-  <div class="cities-list">
-    Most populous cities:
-    <ol>
-      {%for i in range(0, data['country']['cities']|length)%}
-          <li>{{data['country']['cities'][i]}}</li>
-      {%endfor%}
-        
-    </ol>
-  </div>
-</div> -->
 
 {% endblock %}
