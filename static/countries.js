@@ -47,6 +47,7 @@ function createCountryCard(id, country) {
   let name = country.name;
   let capital = country.capital;
   let officialName = country.officialName;
+  let continent = country.continent;
   const flagPath = country.flag;
   const description = country.description;
   const countryLink = `/countries/${id}`;
@@ -59,6 +60,7 @@ function createCountryCard(id, country) {
     name = name.replace(re, (match) => `<mark>${match}</mark>`);
     capital = capital.replace(re, (match) => `<mark>${match}</mark>`);
     officialName = officialName.replace(re, (match) => `<mark>${match}</mark>`);
+    continent = continent.replace(re, (match) => `<mark>${match}</mark>`);
   }
   const html = `
     <a href="${countryLink}">
@@ -68,7 +70,7 @@ function createCountryCard(id, country) {
         </div>
         <div class="col-md-4 country-card-item">
           <div class="country-card-title">${name}</div>
-          <div class="country-card-subtitle">${officialName}</div>
+          <div class="country-card-subtitle">${officialName}, ${continent}</div>
           <div class="country-card-subtitle">☆ ${capital}</div>
         </div>
         <div class="col-md-6 country-card-item country-card-description">

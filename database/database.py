@@ -56,8 +56,9 @@ class DatabaseManager:
   
   def country_does_match(self, country, query):
     return query in country[1]['name'].lower() \
-        or query in query in country[1]['officialName'].lower() \
-        or query in query in country[1]['capital'].lower()
+      or query in country[1]['continent'].lower() \
+      or query in query in country[1]['officialName'].lower() \
+      or query in query in country[1]['capital'].lower()
     
   def save_image(self, image):
     image_path = '/static/images/' + image.filename

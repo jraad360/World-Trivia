@@ -43,10 +43,13 @@ function loadCountryInfo(country) {
   $("#display-image").attr({'src': `${country.flag}`});
   $("#official-name").val(country.officialName);
   $("#capital").val(country.capital);
+  $("#continent").val(country.continent);
   $("#population").val(parseInt(country.population));
   $("#area").val(parseInt(country.area));
   $("#gdp").val(parseInt(country.gdp));
   $("#currency").val(country.currency);
+  $("#national-anthem").val(country.nationalAnthem);
+  $("#link").val(country.link);
 
   setUpCityInputs(country.cities);
 }
@@ -62,12 +65,14 @@ function getCountryFromInputs() {
     description: $("#country-description").val(),
     officialName: $("#official-name").val(),
     capital: $("#capital").val(),
-    // TODO: upload image
+    continent: $("#continent").val(),
     flag: editingExistingCountry() ? data.country.flag : '',
     population: parseInt($("#population").val()),
     area: parseInt($("#area").val()),
     currency: $("#currency").val(),
     gdp: parseInt($("#gdp").val()),
+    nationalAnthem: $("#national-anthem").val(),
+    link: $("#link").val(),
     cities: cities
   }
 }
@@ -146,7 +151,7 @@ async function setUpImageSelector() {
 
 function validateInputs(country, files) {
   let errors = [];
-  const inputsThatCantBeEmpty = ["#country-page-title", "#country-description", "#official-name", "#capital", "#population", "#area", "#currency", "#gdp"];
+  const inputsThatCantBeEmpty = ["#country-page-title", "#country-description", "#official-name", "#capital", "continent", "#population", "#area", "#currency", "#gdp", "#link", "#national-anthem"];
   const integerInputs = [ "#population", "#area", "#gdp"];
 
   inputsThatCantBeEmpty.forEach((selector) => {
