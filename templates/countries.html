@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'countries.js') }}"></script>
+
+<script>
+  let data = {{data|tojson}} 
+  console.log(data)
+</script>
+
+<div id="search-results-title">
+  Showing {{ data.countries|length }} search results for '{{ data['search'] }}'
+</div>
+<div id="countries-list">
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'country.js') }}"></script>
+
+<script>
+  let data = {{data|tojson}}
+</script>
+
+<div class="country-page-content">
+  <div class="country-page-left-side col-md-7">
+    <div id="country-page-title"></div>
+    <div id="country-description"></div>
+  </div>
+  <div class="country-page-right-side col-md-5">
+    <div>
+      <form action="/countries/{{ data['country']['id'] }}/edit">
+        <input id="edit-button" class="ui-button" type="submit" value="Edit" />
+      </form>
+    </div>
+    <div class="general-info">
+      <div>
+        <img id="country-page-flag-image">
+      </div>
+      <br>
+      <div id="general-info-rows">
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">Official Name</div>
+          <div class="general-info-row-value col-md-6"><span id="official-name"></span></div>
+        </div>
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">Capital</div>
+          <div class="general-info-row-value col-md-6"><span id="capital"></span></div>
+        </div>
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">Population</div>
+          <div class="general-info-row-value col-md-6"><span id="population"></span></div>
+        </div>
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">Area</div>
+          <div class="general-info-row-value col-md-6"><span id="area"></span> sq mi</div>
+        </div>
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">GDP</div>
+          <div class="general-info-row-value col-md-6">$<span id="gdp"></span></div>
+        </div>
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">Currency</div>
+          <div class="general-info-row-value col-md-6"><span id="currency"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cities-list">
+      <div class="title">Most Populous Cities</div>
+      <div id="cities-list-left" class="cities-list-col col-md-6">
+      </div>
+      <div id="cities-list-right" class="cities-list-col col-md-6">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="country-data">
+  <div class="title">{{ data['country']['name'] }}</div>
+  <img class="flag-image" src="{{ data['country']['flag'] }}">
+  <div>Population: {{ data['country']['population'] }}</div>
+  <div>Area: {{ data['country']['area'] }} square miles</div>
+  <div>Description: {{ data['country']['description'] }}</div>
+  <div class="cities-list">
+    Most populous cities:
+    <ol>
+      {%for i in range(0, data['country']['cities']|length)%}
+          <li>{{data['country']['cities'][i]}}</li>
+      {%endfor%}
+        
+    </ol>
+  </div>
+</div> -->
+
+{% endblock %}

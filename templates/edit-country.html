@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'edit-country.js') }}"></script>
+
+<script>
+  let data = {{data|tojson}}
+</script>
+
+<div class="country-page-content">
+  <form id="edit-country-form">
+    <div class="country-page-left-side col-md-7">
+      <div class="title">Name</div>
+      <div><input id="country-page-title"></div>
+      <div>
+        <div class="title">Description</div>
+        <textarea id="country-description"></textarea>
+      </div>
+    </div>
+    <div class="country-page-right-side col-md-5">
+      <div>
+        <button id="save-button" class="ui-button" type="button">Save</button>
+      </div>
+      <div class="general-info">
+        <div class="image-upload-container">
+          <input type="file" id="image_input" accept="image/png, image/jpg, image/jpeg">
+          <div id="display-image"></div>
+        </div>
+        <br>
+        <div id="general-info-rows">
+          <div class="general-info-row">
+            <div class="general-info-row-label col-md-6">Official Name</div>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="official-name"></div>
+          </div>
+          <div class="general-info-row">
+            <div class="general-info-row-label col-md-6">Capital</div>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="capital"></div>
+          </div>
+          <div class="general-info-row">
+            <div class="general-info-row-label col-md-6">Population</div>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="population"></div>
+          </div>
+          <div class="general-info-row">
+            <div class="general-info-row-label col-md-6">Area</div>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="area"> sq mi</div>
+          </div>
+          <div class="general-info-row">
+            <div class="general-info-row-label col-md-6">GDP</div>
+            <div class="general-info-row-value col-md-6">$<input class="general-info-input" id="gdp"></div>
+          </div>
+          <div class="general-info-row">
+            <div class="general-info-row-label col-md-6">Currency</div>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="currency"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cities-list">
+        <div class="title">Most Populous Cities</div>
+        <div id="cities-list-left" class="cities-list-col col-md-6">
+        </div>
+        <div id="cities-list-right" class="cities-list-col col-md-6">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
