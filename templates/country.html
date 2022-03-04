@@ -21,10 +21,19 @@
     </div>
     <div class="general-info">
       <div>
+        <div class="general-info-row-label col-md-6">Flag</div>
         <img alt="flag image" id="country-page-flag-image">
       </div>
       <br>
       <div id="general-info-rows">
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6">National Anthem</div><br>
+          <div class="general-info-row-value">
+            <audio controls class="audio-control" id="national-anthem">
+              <source src="{{ data['country']['nationalAnthem'] }}" type="audio/mpeg" data-title="MP3" data-shorttitle="MP3" data-transcodekey="mp3" data-width="0" data-height="0" data-bandwidth="147600"/>
+            </audio>
+          </div><br>
+        </div>
         <div class="general-info-row">
           <div class="general-info-row-label col-md-6">Official Name</div>
           <div class="general-info-row-value col-md-6"><span id="official-name"></span></div>
@@ -48,6 +57,9 @@
         <div class="general-info-row">
           <div class="general-info-row-label col-md-6">Currency</div>
           <div class="general-info-row-value col-md-6"><span id="currency"></span></div>
+        </div>
+        <div class="general-info-row">
+          <div class="general-info-row-label col-md-6"><a href="{{ data['country']['link'] }}">More Info</a></div>
         </div>
       </div>
     </div>

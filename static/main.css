@@ -83,6 +83,7 @@ body {
 #country-page-flag-image {
   width: 100%;
   border: 1px solid black;
+  z-index: -1;
 }
 
 .home-country-card {
@@ -215,24 +216,31 @@ body {
   border-radius: var(--section-border-radius);
   padding: var(--section-padding);
   overflow-y: auto;
-  max-width: 100%;
-  overflow-x: hidden;
+  /* max-width: 100%;
+  overflow-x: hidden; */
+  margin: 0px;
   margin-bottom: 60px;
 }
 
 .general-info-row {
   margin-right: 15px;
+  overflow-y: auto;
+  /* max-width: 100%;
+  overflow-x: hidden; */
 }
 
 .general-info-row-label {
   height: auto;
   float: left;
   font-weight: bold;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 .general-info-row-value {
   height: auto;
   float: left;
+  width: 100%;
 }
 
 .country-page-content {
@@ -318,6 +326,12 @@ input {
   border-radius: 5px;
 }
 
+textarea:focus, input:focus {
+  outline: none !important;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
 .purpose-group {
   font-size: larger;
   background-color: var(--main-bg-color);
@@ -333,4 +347,14 @@ input {
   margin: 20px;
   padding: var(--section-padding);
   color: white;
+}
+
+#country-search-input {
+  width: 500px;
+}
+
+.audio-control {
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }

@@ -5,9 +5,8 @@ $(document).ready(() => {
 function loadCountries(countriesObject) {
   $("#countries-list").empty();
 
-  Object.entries(countriesObject).forEach(([id, country]) => {
-    console.log('hey')
-    addCountryToView(id, country)
+  Object.entries(countriesObject).forEach(([index, country]) => {
+    addCountryToView(country.id, country)
   });
 
   if (Object.entries(countriesObject).length == 0) {

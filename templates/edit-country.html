@@ -14,8 +14,8 @@
       <label for="name" class="title">Name <i class="fa fa-edit"></i></label>
       <div><input class="form-text " id="country-page-title" name="name" type="text"></div>
       <div>
-        <label class="title">Description <i class="fa fa-edit check"></i></label>
-        <textarea class="form-control" name="description" id="country-description"></textarea>
+        <label for="description" class="title">Description <i class="fa fa-edit check"></i></label>
+        <textarea name="description" id="country-description"></textarea>
       </div>
     </div>
     <div class="country-page-right-side col-md-5">
@@ -26,7 +26,7 @@
       <div class="general-info">
         <div class="image-upload-container">
           <div>
-            <div class="col-md-6 image-upload-item"><label class="title">Flag Image <i class="fa fa-edit"></i></label></div>
+            <div class="col-md-6 image-upload-item"><label for="image" class="title">Flag Image <i class="fa fa-edit"></i></label></div>
             <div class="col-md-6 image-upload-item"><input type="file" id="image-input" name="image" accept="image/png, image/jpg, image/jpeg"></div>
           </div>
           <img alt="uploaded flag image" id="display-image">
@@ -34,33 +34,41 @@
         <br>
         <div id="general-info-rows">
           <div class="general-info-row">
-            <label class="general-info-row-label col-md-6">Official Name <i class="fa fa-edit"></i></label>
+            <label for="nationalAnthem" class="general-info-row-label col-md-6">National Anthem (Link) <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="form-text general-info-input" id="national-anthem" name="nationalAnthem" type="text"></div>
+          </div>
+          <div class="general-info-row">
+            <label for="officialName" class="general-info-row-label col-md-6">Official Name <i class="fa fa-edit"></i></label>
             <div class="general-info-row-value col-md-6"><input class="form-text general-info-input" id="official-name" name="officialName" type="text"></div>
           </div>
           <div class="general-info-row">
-            <label class="general-info-row-label col-md-6">Capital <i class="fa fa-edit"></i></label>
+            <label for="capital" class="general-info-row-label col-md-6">Capital <i class="fa fa-edit"></i></label>
             <div class="general-info-row-value col-md-6"><input class="general-info-input" id="capital" name="capital" type="text"></div>
           </div>
           <div class="general-info-row">
-            <label class="general-info-row-label col-md-6">Population <i class="fa fa-edit"></i></label>
+            <label for="population" class="general-info-row-label col-md-6">Population <i class="fa fa-edit"></i></label>
             <div class="general-info-row-value col-md-6"><input class="general-info-input" id="population" name="population" type="text"></div>
           </div>
           <div class="general-info-row">
-            <label class="general-info-row-label col-md-6">Area (sq mi) <i class="fa fa-edit"></i></label>
+            <label for="area" class="general-info-row-label col-md-6">Area (sq mi) <i class="fa fa-edit"></i></label>
             <div class="general-info-row-value col-md-6"><input class="general-info-input" id="area" name="area" type="text"></div>
           </div>
           <div class="general-info-row">
-            <label class="general-info-row-label col-md-6">GDP ($)<i class="fa fa-edit"></i></label>
+            <label for="gdp" class="general-info-row-label col-md-6">GDP ($)<i class="fa fa-edit"></i></label>
             <div class="general-info-row-value col-md-6"><input class="general-info-input" id="gdp" name="gdp" type="text"></div>
           </div>
           <div class="general-info-row">
-            <label class="general-info-row-label col-md-6">Currency <i class="fa fa-edit"></i></label>
+            <label for="currency" class="general-info-row-label col-md-6">Currency <i class="fa fa-edit"></i></label>
             <div class="general-info-row-value col-md-6"><input class="general-info-input" id="currency" name="currency" type="text"></div>
+          </div>
+          <div class="general-info-row">
+            <label for="link" class="general-info-row-label col-md-6">More Info (Link) <i class="fa fa-edit"></i></label>
+            <div class="general-info-row-value col-md-6"><input class="general-info-input" id="link" name="link" type="text"></div>
           </div>
         </div>
       </div>
       <div class="cities-list">
-        <label class="title">Most Populous Cities <i class="fa fa-edit"></i></label>
+        <label for="cities" class="title">Most Populous Cities <i class="fa fa-edit"></i></label>
         <div id="cities-list-left" class="cities-list-col col-md-6">
         </div>
         <div id="cities-list-right" class="cities-list-col col-md-6">

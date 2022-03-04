@@ -1,5 +1,3 @@
-// uploadedImage = undefined
-
 $(document).ready(() => {
   
   setUpImageSelector();
@@ -198,4 +196,16 @@ function editingExistingCountry() {
 function showDiscardChangesConfirmation() {
   const message = "Are you sure you want to discard your changes?";
   if (confirm(message)) location.replace(`/countries/${data.country.id}`);
+}
+
+function isValidHttpUrl(string) {
+  let url;
+  
+  try {
+    url = new URL(string);
+  } catch (error) {
+    return false;  
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
 }

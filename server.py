@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 db = DatabaseManager()
-popular_country_ids = [0, 1, 2]
+popular_country_ids = [0, 4, 8]
 
 @app.route("/")
 def home():
