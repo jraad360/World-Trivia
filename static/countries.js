@@ -66,7 +66,7 @@ function createCountryCard(id, country) {
     <a href="${countryLink}">
       <div id="country-${id}" class="country-card">
         <div class="col-md-2 country-card-item">
-          <img alt="flag of ${country.name}" class="list-view-flag-image" src="${flagPath}">
+          <img alt="flag of ${country.name}" title="flag of ${country.name}" class="list-view-flag-image" src="${flagPath}">
         </div>
         <div class="col-md-4 country-card-item">
           <div class="country-card-title">${name}</div>

@@ -31,7 +31,7 @@ function createHomeCountryCard(id, country) {
         <a href="${countryLink}">
           <div class="home-card-content">
             <div class="col-md-12 home-country-card-item">
-              <img alt="flag of ${country.name}" class="home-country-card-flag" src="${flagPath}">
+              <img title="flag of ${country.name}" alt="flag of ${country.name}" class="home-country-card-flag" src="${flagPath}">
             </div>
             <div class="col-md-12 home-country-card-item">
               <div class="country-card-title">${name}</div>

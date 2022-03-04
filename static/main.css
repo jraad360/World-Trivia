@@ -180,7 +180,6 @@ body {
 
 .country-page-left-side, .country-page-right-side {
   float: left;
-  overflow: auto;
 }
 
 .country-page-left-side {
@@ -216,21 +215,20 @@ body {
   border-radius: var(--section-border-radius);
   padding: var(--section-padding);
   overflow-y: auto;
-  /* max-width: 100%;
-  overflow-x: hidden; */
+  max-width: 100%;
+  overflow-x: hidden;
   margin: 0px;
   margin-bottom: 60px;
 }
 
 .general-info-row {
   margin-right: 15px;
-  overflow-y: auto;
-  /* max-width: 100%;
-  overflow-x: hidden; */
+  /* overflow-y: auto;
+  max-width: 100%;
+  overflow-x; */
 }
 
 .general-info-row-label {
-  height: auto;
   float: left;
   font-weight: bold;
   margin-left: 0px;
@@ -238,7 +236,6 @@ body {
 }
 
 .general-info-row-value {
-  height: auto;
   float: left;
   width: 100%;
 }

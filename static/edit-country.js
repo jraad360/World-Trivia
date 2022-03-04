@@ -151,10 +151,11 @@ async function setUpImageSelector() {
 
 function validateInputs(country, files) {
   let errors = [];
-  const inputsThatCantBeEmpty = ["#country-page-title", "#country-description", "#official-name", "#capital", "continent", "#population", "#area", "#currency", "#gdp", "#link", "#national-anthem"];
+  const inputsThatCantBeEmpty = ["#country-page-title", "#country-description", "#official-name", "#capital", "#continent", "#population", "#area", "#currency", "#gdp", "#link", "#national-anthem"];
   const integerInputs = [ "#population", "#area", "#gdp"];
 
   inputsThatCantBeEmpty.forEach((selector) => {
+    console.log(selector);
     if ($(selector).val().trim() == '') {
       insertError(selector, "This cannot be empty.");
       errors.push(selector);
